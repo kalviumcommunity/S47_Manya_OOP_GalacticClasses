@@ -3,6 +3,7 @@ public class Resource {
     private int quantity;
 
     public Resource(String type, int quantity) {
+        //using "this" pointer 
         this.type = type;
         this.quantity = quantity;
     }

@@ -4,6 +4,7 @@ public class Astronaut {
     private int foodConsumption;
 
     public Astronaut(String name, int oxygenConsumption, int foodConsumption) {
+        //using "this" pointer 
         this.name = name;
         this.oxygenConsumption = oxygenConsumption;
         this.foodConsumption = foodConsumption;
