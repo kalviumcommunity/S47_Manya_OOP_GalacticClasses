@@ -1,14 +1,14 @@
 public class Main {
     public static void main(String[] args) {
-        
-        Astronaut astronaut1 = new Astronaut("Manya", 5, 3);
-        Astronaut astronaut2 = new Astronaut("Ishita", 4, 2);
+        Astronaut[] astronauts = new Astronaut[3];
+        astronauts[0] = new Astronaut("Manya", 5, 3);
+        astronauts[1] = new Astronaut("Hanshul", 4, 2);
+        astronauts[2] = new Astronaut("Ishita", 6, 4);
 
-        astronaut1.consumeOxygen();
-        astronaut1.consumeFood();
-
-        astronaut2.consumeOxygen();
-        astronaut2.consumeFood();
+        for (Astronaut astronaut : astronauts) {
+            astronaut.consumeOxygen();
+            astronaut.consumeFood();
+        }
 
         Resource oxygen = new Resource("Oxygen", 100);
         Resource food = new Resource("Food", 50);
