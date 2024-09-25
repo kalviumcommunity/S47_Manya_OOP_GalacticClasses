@@ -1,25 +1,32 @@
 public class Resource {
     private String type;
     private int quantity;
+    // Static variable created to track total resources consumed
+    private static int totalResourcesConsumed = 0;
 
     public Resource(String type, int quantity) {
-        //using "this" pointer 
         this.type = type;
         this.quantity = quantity;
     }
 
-    public void consume(int amt) {
-        if (amt > quantity) {
+    public void consume(int amount) {
+        if (amount > quantity) {
             System.out.println("Not enough " + type + " to consume.");
         } else {
-            quantity -= amt;
-            System.out.println(amt + " units of " + type + " consumed. Remaining: " + quantity);
+            quantity -= amount;
+            totalResourcesConsumed += amount;  // Increment total resources consumed
+            System.out.println(amount + " units of " + type + " consumed. Remaining: " + quantity);
         }
     }
 
-    public void reload(int amt) {
-        quantity += amt;
-        System.out.println(amt + " units of " + type + " added. New total: " + quantity);
+    public void replenish(int amount) {
+        quantity += amount;
+        System.out.println(amount + " units of " + type + " added. New total: " + quantity);
+    }
+
+    // Static method created to get the total resources consumed
+    public static int getTotalResourcesConsumed() {
+        return totalResourcesConsumed;
     }
 
     public int getQuantity() {
