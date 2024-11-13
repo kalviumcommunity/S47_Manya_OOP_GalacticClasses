@@ -3,8 +3,14 @@ public class Fuel extends Resource {
         super("Fuel", quantity);
     }
 
-    public void refuel(int amount) {
-        reload(amount);
-        System.out.println("Refueled " + amount + " units of Fuel.");
+    @Override
+    public void consume(int amount) {
+        if (amount > getQuantity()) {
+            System.out.println("Not enough Fuel to consume.");
+        } else {
+            setQuantity(getQuantity() - amount);
+            incrementTotalConsumed(amount);
+            System.out.println(amount + " units of Fuel consumed. Remaining: " + getQuantity());
+        }
     }
 }

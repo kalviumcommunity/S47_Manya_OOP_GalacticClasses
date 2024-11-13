@@ -1,12 +1,12 @@
 public class Inheritance {
     public static void main(String[] args) {
-        Fuel fuel = new Fuel(100);
+        Resource fuel = new Fuel(100);
         fuel.consume(30);
-        fuel.consume(20, "Consuming with a message");
+        fuel.reload(20);
 
-        Water water = new Water(50);
+        Resource water = new Water(50);
         water.consume(10);
-        water.consume(15, "Drinking water");
+        water.reload(25);
 
         System.out.println("Total Resources Consumed: " + Resource.getTotalResourcesConsumed());
     }
