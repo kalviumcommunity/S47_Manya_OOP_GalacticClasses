@@ -1,58 +1,38 @@
 public class Astronaut {
-    // Private data members (accessible only within this class)
     private String name;
-    private int oxygenLevel;
-    private int foodLevel;
+    private int oxygenConsumption;
+    private int foodConsumption;
+    private static int totalAstronauts = 0;
 
-    // Public static member (accessible anywhere)
-    public static int totalAstronauts = 0;
-
-    // Public constructor
-    public Astronaut(String name, int oxygenLevel, int foodLevel) {
-        this.name = name;
-        this.oxygenLevel = oxygenLevel;
-        this.foodLevel = foodLevel;
+    // Default Constructor
+    public Astronaut() {
+        this.name = "Unknown";
+        this.oxygenConsumption = 0;
+        this.foodConsumption = 0;
         totalAstronauts++;
     }
 
-    // Public accessor (getter) methods
+    // Parameterized Constructor
+    public Astronaut(String name, int oxygenConsumption, int foodConsumption) {
+        this.name = name;
+        this.oxygenConsumption = oxygenConsumption;
+        this.foodConsumption = foodConsumption;
+        totalAstronauts++;
+    }
+
+    public void consumeOxygen() {
+        System.out.println(name + " is consuming " + oxygenConsumption + " units of oxygen.");
+    }
+
+    public void consumeFood() {
+        System.out.println(name + " is consuming " + foodConsumption + " units of food.");
+    }
+
     public String getName() {
         return name;
     }
 
-    public int getOxygenLevel() {
-        return oxygenLevel;
-    }
-
-    public int getFoodLevel() {
-        return foodLevel;
-    }
-
-    // Public mutator (setter) methods
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setOxygenLevel(int oxygenLevel) {
-        if (oxygenLevel >= 0) {
-            this.oxygenLevel = oxygenLevel;
-        } else {
-            System.out.println("Invalid oxygen level!");
-        }
-    }
-
-    public void setFoodLevel(int foodLevel) {
-        if (foodLevel >= 0) {
-            this.foodLevel = foodLevel;
-        } else {
-            System.out.println("Invalid food level!");
-        }
-    }
-
-    // Public method to display astronaut info
-    public void displayInfo() {
-        System.out.println("Astronaut Name: " + name);
-        System.out.println("Oxygen Level: " + oxygenLevel);
-        System.out.println("Food Level: " + foodLevel);
+    public static int getTotalAstronauts() {
+        return totalAstronauts;
     }
 }

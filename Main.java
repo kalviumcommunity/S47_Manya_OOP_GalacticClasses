@@ -1,37 +1,34 @@
 public class Main {
     public static void main(String[] args) {
-        Astronaut astronaut1 = new Astronaut("Manya", 10, 5);
-        Astronaut astronaut2 = new Astronaut("Hanshul", 8, 6);
+        // Using default constructor
+        Astronaut defaultAstronaut = new Astronaut();
+        System.out.println("Default Astronaut Name: " + defaultAstronaut.getName());
 
-        // Display astronaut information using public methods
-        astronaut1.displayInfo();
-        astronaut2.displayInfo();
+        // Using parameterized constructor
+        Astronaut astronaut1 = new Astronaut("Manya", 5, 3);
+        Astronaut astronaut2 = new Astronaut("Hanshul", 4, 2);
 
-        // Modify astronaut data using public mutator methods
-        astronaut1.setOxygenLevel(12);
-        astronaut2.setFoodLevel(7);
+        // Using default constructor for Resource
+        Resource defaultResource = new Resource();
+        System.out.println("Default Resource Name: " + defaultResource.getResourceName());
 
-        System.out.println("\nAfter Updates:");
-        astronaut1.displayInfo();
-        astronaut2.displayInfo();
-
+        // Using parameterized constructor for Resource
         Resource oxygen = new Resource("Oxygen", 100);
         Resource food = new Resource("Food", 50);
 
-        // Use public methods to consume and modify resources
-        oxygen.consume(20);
+        // Demonstrating functionality
+        astronaut1.consumeOxygen();
+        astronaut1.consumeFood();
+        astronaut2.consumeOxygen();
+        astronaut2.consumeFood();
+
+        oxygen.consume(10);
+        oxygen.reload(20);
+
         food.consume(15);
+        food.reload(10);
 
-        // Modify resource details using mutators
-        oxygen.setResourceName("Life-Support Oxygen");
-        food.setResourceAmount(40);
-
-        System.out.println("\nResource Updates:");
-        System.out.println("Oxygen Resource Name: " + oxygen.getResourceName());
-        System.out.println("Food Resource Amount: " + food.getResourceAmount());
-
-        Resource.displayTotalResourcesConsumed();
-
-        System.out.println("\nTotal Astronauts: " + Astronaut.totalAstronauts);
+        System.out.println("Total number of astronauts: " + Astronaut.getTotalAstronauts());
+        System.out.println("Total resources consumed: " + Resource.getTotalResourcesConsumed() + " units.");
     }
 }
