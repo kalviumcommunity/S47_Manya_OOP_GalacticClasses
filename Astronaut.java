@@ -1,35 +1,76 @@
 public class Astronaut {
+    // Private data members
     private String name;
-    private int oxygenConsumption;
-    private int foodConsumption;
-    
-    // Static variable created to count the total number of astronauts
+    private int oxygenLevel;
+    private int foodLevel;
+
+    // Static member to track total astronauts
     private static int totalAstronauts = 0;
 
-    public Astronaut(String name, int oxygenConsumption, int foodConsumption) {
+    // Constructor
+    public Astronaut(String name, int oxygenLevel, int foodLevel) {
         this.name = name;
-        this.oxygenConsumption = oxygenConsumption;
-        this.foodConsumption = foodConsumption;
-        totalAstronauts++;  
+        this.oxygenLevel = oxygenLevel;
+        this.foodLevel = foodLevel;
+        totalAstronauts++;
     }
 
+    // Accessor (getter) methods
+    public String getName() {
+        return name;
+    }
+
+    public int getOxygenLevel() {
+        return oxygenLevel;
+    }
+
+    public int getFoodLevel() {
+        return foodLevel;
+    }
+
+    // Mutator (setter) methods
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setOxygenLevel(int oxygenLevel) {
+        if (oxygenLevel >= 0) {
+            this.oxygenLevel = oxygenLevel;
+        } else {
+            System.out.println("Oxygen level cannot be negative!");
+        }
+    }
+
+    public void setFoodLevel(int foodLevel) {
+        if (foodLevel >= 0) {
+            this.foodLevel = foodLevel;
+        } else {
+            System.out.println("Food level cannot be negative!");
+        }
+    }
+
+    // Method to consume oxygen
     public void consumeOxygen() {
-        System.out.println(name + " is consuming " + oxygenConsumption + " units of oxygen.");
+        if (oxygenLevel > 0) {
+            oxygenLevel--;
+            System.out.println(name + " consumed oxygen. Remaining: " + oxygenLevel);
+        } else {
+            System.out.println(name + " has no oxygen left!");
+        }
     }
 
+    // Method to consume food
     public void consumeFood() {
-        System.out.println(name + " is consuming " + foodConsumption + " units of food.");
+        if (foodLevel > 0) {
+            foodLevel--;
+            System.out.println(name + " consumed food. Remaining: " + foodLevel);
+        } else {
+            System.out.println(name + " has no food left!");
+        }
     }
 
-    // Static method  created to get the total number of astronauts
+    // Static method to get the total number of astronauts
     public static int getTotalAstronauts() {
         return totalAstronauts;
-    }
-
-    // Static method created to display astronaut information
-    public static void displayAstronautInfo(Astronaut astronaut) {
-        System.out.println("Astronaut Name: " + astronaut.name);
-        System.out.println("Oxygen Consumption: " + astronaut.oxygenConsumption);
-        System.out.println("Food Consumption: " + astronaut.foodConsumption);
     }
 }

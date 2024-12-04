@@ -1,33 +1,57 @@
-public abstract class Resource {
-    private String type;
-    private int quantity;
+public class Resource {
+    // Private data members
+    private String resourceName;
+    private int resourceAmount;
 
+    // Static member to track total resources consumed
     private static int totalResourcesConsumed = 0;
 
-    public Resource(String type, int quantity) {
-        this.type = type;
-        this.quantity = quantity;
+    // Constructor
+    public Resource(String resourceName, int resourceAmount) {
+        this.resourceName = resourceName;
+        this.resourceAmount = resourceAmount;
     }
 
-    public abstract void consume(int amount);
+    // Accessor (getter) methods
+    public String getResourceName() {
+        return resourceName;
+    }
 
+    public int getResourceAmount() {
+        return resourceAmount;
+    }
+
+    // Mutator (setter) methods
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
+    }
+
+    public void setResourceAmount(int resourceAmount) {
+        if (resourceAmount >= 0) {
+            this.resourceAmount = resourceAmount;
+        } else {
+            System.out.println("Resource amount cannot be negative!");
+        }
+    }
+
+    // Method to consume resource
+    public void consume(int amount) {
+        if (resourceAmount >= amount) {
+            resourceAmount -= amount;
+            totalResourcesConsumed += amount;
+            System.out.println(amount + " units of " + resourceName + " consumed. Remaining: " + resourceAmount);
+        } else {
+            System.out.println("Not enough " + resourceName + " available.");
+        }
+    }
+
+    // Method to reload resource
     public void reload(int amount) {
-        quantity += amount;
-        System.out.println(amount + " units of " + type + " added. New total: " + quantity);
+        resourceAmount += amount;
+        System.out.println(amount + " units of " + resourceName + " added. Total: " + resourceAmount);
     }
 
-    protected int getQuantity() {
-        return quantity;
-    }
-
-    protected void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    protected void incrementTotalConsumed(int amount) {
-        totalResourcesConsumed += amount;
-    }
-
+    // Static method to get total resources consumed
     public static int getTotalResourcesConsumed() {
         return totalResourcesConsumed;
     }

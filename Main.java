@@ -1,33 +1,45 @@
 public class Main {
     public static void main(String[] args) {
-        // Create an array of 4 Astronaut objects
-        Astronaut[] astronauts = new Astronaut[4];
+        
+        Astronaut[] astronauts = new Astronaut[3];
         astronauts[0] = new Astronaut("Manya", 5, 3);
         astronauts[1] = new Astronaut("Hanshul", 4, 2);
         astronauts[2] = new Astronaut("Dhruv", 6, 4);
-        astronauts[3] = new Astronaut("Priya", 5, 3);  // Added a fourth astronaut
 
-
-
+        // Display initial details using accessor methods
         for (Astronaut astronaut : astronauts) {
-            astronaut.consumeOxygen();
-            astronaut.consumeFood();
+            System.out.println("Astronaut Name: " + astronaut.getName());
+            System.out.println("Oxygen Level: " + astronaut.getOxygenLevel());
+            System.out.println("Food Level: " + astronaut.getFoodLevel());
         }
 
-        // Calling the static method to display astronaut information
-        Astronaut.displayAstronautInfo(astronauts[0]);  // Display info for the first astronaut
+        // Modify astronaut data using mutator methods
+        astronauts[0].setOxygenLevel(10);
+        astronauts[1].setFoodLevel(5);
 
+        // Create resources
         Resource oxygen = new Resource("Oxygen", 100);
         Resource food = new Resource("Food", 50);
 
-        oxygen.consume(10);
-        oxygen.reload(20);
+        // Use accessor and mutator methods on resources
+        System.out.println("Resource Name: " + oxygen.getResourceName());
+        System.out.println("Initial Amount: " + oxygen.getResourceAmount());
 
-        food.consume(15);
-        food.reload(10);
+        oxygen.setResourceAmount(120); // Modify resource amount
+        System.out.println("Updated Amount: " + oxygen.getResourceAmount());
 
-        System.out.println("Total number of astronauts: " + Astronaut.getTotalAstronauts());
+        // Consume and reload resources
+        oxygen.consume(20);
+        food.reload(15);
 
-        System.out.println("Total resources consumed: " + Resource.getTotalResourcesConsumed() + " units.");
+        // Display final astronaut data using accessor methods
+        for (Astronaut astronaut : astronauts) {
+            System.out.println("Astronaut Name: " + astronaut.getName());
+            System.out.println("Final Oxygen Level: " + astronaut.getOxygenLevel());
+            System.out.println("Final Food Level: " + astronaut.getFoodLevel());
+        }
+
+        // Display total resources consumed
+        System.out.println("Total Resources Consumed: " + Resource.getTotalResourcesConsumed());
     }
 }
