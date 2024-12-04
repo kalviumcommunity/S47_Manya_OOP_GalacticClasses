@@ -1,50 +1,38 @@
 public class Resource {
-    // Private data members
     private String resourceName;
-    private int resourceAmount;
+    private int quantity;
+    private static int totalResourcesConsumed = 0;
 
-    static int totalResourcesConsumed = 0;
-
-    // Public constructor
-    public Resource(String resourceName, int resourceAmount) {
-        this.resourceName = resourceName;
-        this.resourceAmount = resourceAmount;
+    // Default Constructor
+    public Resource() {
+        this.resourceName = "Unknown Resource";
+        this.quantity = 0;
     }
 
-    // Public accessor (getter) methods
+    // Parameterized Constructor
+    public Resource(String resourceName, int quantity) {
+        this.resourceName = resourceName;
+        this.quantity = quantity;
+    }
+
+    public void consume(int amount) {
+        if (amount <= quantity) {
+            quantity -= amount;
+            totalResourcesConsumed += amount;
+        } else {
+            System.out.println("Not enough " + resourceName + " available!");
+        }
+    }
+
+    public void reload(int amount) {
+        quantity += amount;
+    }
+
     public String getResourceName() {
         return resourceName;
     }
 
-    public int getResourceAmount() {
-        return resourceAmount;
-    }
-
-    // Public mutator (setter) methods
-    public void setResourceName(String resourceName) {
-        this.resourceName = resourceName;
-    }
-
-    public void setResourceAmount(int resourceAmount) {
-        if (resourceAmount >= 0) {
-            this.resourceAmount = resourceAmount;
-        } else {
-            System.out.println("Resource amount cannot be negative!");
-        }
-    }
-
-    // Public method to consume resource
-    public void consume(int amount) {
-        if (resourceAmount >= amount) {
-            resourceAmount -= amount;
-            totalResourcesConsumed += amount;
-            System.out.println(amount + " units of " + resourceName + " consumed. Remaining: " + resourceAmount);
-        } else {
-            System.out.println("Not enough " + resourceName + " available.");
-        }
-    }
-
-    public static void displayTotalResourcesConsumed() {
-        System.out.println("Total Resources Consumed: " + totalResourcesConsumed + " units.");
+    public static int getTotalResourcesConsumed() {
+        return totalResourcesConsumed;
     }
 }
