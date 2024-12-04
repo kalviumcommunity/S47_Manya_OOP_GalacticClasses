@@ -3,16 +3,15 @@ public class Resource {
     private String resourceName;
     private int resourceAmount;
 
-    // Static member to track total resources consumed
-    private static int totalResourcesConsumed = 0;
+    static int totalResourcesConsumed = 0;
 
-    // Constructor
+    // Public constructor
     public Resource(String resourceName, int resourceAmount) {
         this.resourceName = resourceName;
         this.resourceAmount = resourceAmount;
     }
 
-    // Accessor (getter) methods
+    // Public accessor (getter) methods
     public String getResourceName() {
         return resourceName;
     }
@@ -21,7 +20,7 @@ public class Resource {
         return resourceAmount;
     }
 
-    // Mutator (setter) methods
+    // Public mutator (setter) methods
     public void setResourceName(String resourceName) {
         this.resourceName = resourceName;
     }
@@ -34,7 +33,7 @@ public class Resource {
         }
     }
 
-    // Method to consume resource
+    // Public method to consume resource
     public void consume(int amount) {
         if (resourceAmount >= amount) {
             resourceAmount -= amount;
@@ -45,14 +44,7 @@ public class Resource {
         }
     }
 
-    // Method to reload resource
-    public void reload(int amount) {
-        resourceAmount += amount;
-        System.out.println(amount + " units of " + resourceName + " added. Total: " + resourceAmount);
-    }
-
-    // Static method to get total resources consumed
-    public static int getTotalResourcesConsumed() {
-        return totalResourcesConsumed;
+    public static void displayTotalResourcesConsumed() {
+        System.out.println("Total Resources Consumed: " + totalResourcesConsumed + " units.");
     }
 }
