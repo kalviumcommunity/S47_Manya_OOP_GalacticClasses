@@ -4,15 +4,7 @@ public class Astronaut {
     private int foodConsumption;
     private static int totalAstronauts = 0;
 
-    // Default Constructor
-    public Astronaut() {
-        this.name = "Unknown";
-        this.oxygenConsumption = 0;
-        this.foodConsumption = 0;
-        totalAstronauts++;
-    }
-
-    // Parameterized Constructor
+    // Constructor to initialize Astronaut details
     public Astronaut(String name, int oxygenConsumption, int foodConsumption) {
         this.name = name;
         this.oxygenConsumption = oxygenConsumption;
