@@ -3,7 +3,6 @@ public class Resource {
     private int quantity;
     private static int totalResourcesConsumed = 0;
 
-    // Constructor to initialize Resource details
     public Resource(String resourceName, int quantity) {
         this.resourceName = resourceName;
         this.quantity = quantity;
