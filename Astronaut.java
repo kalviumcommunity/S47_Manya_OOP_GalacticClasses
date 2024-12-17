@@ -2,28 +2,24 @@ public class Astronaut {
     private String name;
     private int oxygenConsumption;
     private int foodConsumption;
-    private static int totalAstronauts = 0;
 
     public Astronaut(String name, int oxygenConsumption, int foodConsumption) {
         this.name = name;
         this.oxygenConsumption = oxygenConsumption;
         this.foodConsumption = foodConsumption;
-        totalAstronauts++;
     }
 
-    public void consumeOxygen() {
+    public void consumeOxygen(BaseResource oxygen) {
         System.out.println(name + " is consuming " + oxygenConsumption + " units of oxygen.");
+        oxygen.consume(oxygenConsumption);
     }
 
-    public void consumeFood() {
+    public void consumeFood(BaseResource food) {
         System.out.println(name + " is consuming " + foodConsumption + " units of food.");
+        food.consume(foodConsumption);
     }
 
     public String getName() {
         return name;
-    }
-
-    public static int getTotalAstronauts() {
-        return totalAstronauts;
     }
 }
