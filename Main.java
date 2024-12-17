@@ -1,26 +1,30 @@
 public class Main {
     public static void main(String[] args) {
-        // Astronaut instances
+        // Base class Astronaut
         Astronaut astronaut1 = new Astronaut("Manya", 5, 3);
-        Astronaut astronaut2 = new Astronaut("Hanshul", 4, 2);
 
-        // Resource instances
+        // Extended class SpecialAstronaut
+        SpecialAstronaut specialAstronaut = new SpecialAstronaut("Hanshul", 4, 2, 2);
+
+        // Base class Resource
         Resource oxygen = new Resource("Oxygen", 100);
-        Resource food = new Resource("Food", 50);
 
-        // Astronauts consume resources
+        // Extended class SpecialResource
+        SpecialResource food = new SpecialResource("Food", 50, 10);
+
+        // Demonstrating base class functionality
         astronaut1.consumeOxygen();
         astronaut1.consumeFood();
 
-        astronaut2.consumeOxygen();
-        astronaut2.consumeFood();
+        // Demonstrating extended class functionality
+        specialAstronaut.consumeOxygen();
+        specialAstronaut.consumeFood();
 
-        // Resources being consumed and reloaded
         oxygen.consume(10);
         oxygen.reload(20);
 
         food.consume(15);
-        food.reload(10);
+        food.provideBonusSupply();
 
         // Display total astronauts and resources consumed
         System.out.println("Total number of astronauts: " + Astronaut.getTotalAstronauts());

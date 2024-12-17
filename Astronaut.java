@@ -4,7 +4,6 @@ public class Astronaut {
     private int foodConsumption;
     private static int totalAstronauts = 0;
 
-    // Constructor to initialize Astronaut details
     public Astronaut(String name, int oxygenConsumption, int foodConsumption) {
         this.name = name;
         this.oxygenConsumption = oxygenConsumption;
