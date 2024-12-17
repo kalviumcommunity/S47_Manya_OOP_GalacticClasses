@@ -3,13 +3,7 @@ public class Resource {
     private int quantity;
     private static int totalResourcesConsumed = 0;
 
-    // Default Constructor
-    public Resource() {
-        this.resourceName = "Unknown Resource";
-        this.quantity = 0;
-    }
-
-    // Parameterized Constructor
+    // Constructor to initialize Resource details
     public Resource(String resourceName, int quantity) {
         this.resourceName = resourceName;
         this.quantity = quantity;
@@ -19,6 +13,7 @@ public class Resource {
         if (amount <= quantity) {
             quantity -= amount;
             totalResourcesConsumed += amount;
+            System.out.println(amount + " units of " + resourceName + " consumed.");
         } else {
             System.out.println("Not enough " + resourceName + " available!");
         }
@@ -26,10 +21,7 @@ public class Resource {
 
     public void reload(int amount) {
         quantity += amount;
-    }
-
-    public String getResourceName() {
-        return resourceName;
+        System.out.println(amount + " units of " + resourceName + " reloaded.");
     }
 
     public static int getTotalResourcesConsumed() {
